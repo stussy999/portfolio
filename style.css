@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@200&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+body{
+    background: linear-gradient(-45deg, #e415d9, #4b15c9, #4c1792, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container{
+    position:relative;
+    background-color: cornsilk;
+    max-width: 1000px;
+   min-height:1000px;
+   margin:50px;
+display:grid;
+width: 100%;
+grid-template-columns: 1fr 2fr;
+
+}
+/*Left Container */
+.container .left{
+    background-color: darkblue;
+    padding:40px;
+    
+}
+.prifle{
+    display:flex;
+align-items: center;
+    flex-direction: column;
+    padding-bottom: 20px;
+    position:relative;
+    border-bottom: 1px solid blueviolet; 
+}
+.prifle .boxet {
+    position:relative;
+    overflow: hidden;
+    width:200px;
+    height:200px;
+border-radius: 50%;
+}
+.prifle .boxet img{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.prifle h2{
+    color:white;
+    font-size: 1.5em;
+    margin-top:20px;
+    text-transform: uppercase;
+    text-align:center;
+    font-weight: 600;
+    line-height: 1.4em;
+}
+
+.prifle h2 span {
+    
+    font-size: 0.8em;
+
+   
+    font-weight: 300;
+    
+}
+.info{
+    padding-top:40px;
+}
+.colum{
+    color:cornsilk;
+    text-transform:uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+.info ul{
+   position: relative;
+}
+.info ul li{
+   list-style: none;
+   position: relative;
+   margin:10px 0 ;
+   cursor: pointer;
+}
+.info ul li .icon{
+    display: inline-block;
+    width:30px;
+    font-size: 18px;
+    color:cornsilk;
+}
+.info ul li span {
+    color:cornsilk;
+    font-weight: 300;
+
+}
+.info.ed li{
+    margin-bottom: 15px;
+    
+}
+.info.ed h4:nth-child(2){
+    font-weight: 500;
+    color:cornsilk;
+}
+.info.ed h4{
+    font-weight: 300;
+    color:cornsilk;
+}
+.info.lang .line{
+position: relative;
+width: 100%;
+height:6px;
+display:block;
+background-color: tomato;
+margin-top: 5px;
+}
+.info.lang .line div{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    background: yellow;
+}
+
+/* Right container */
+.container .right{
+    background-color: rgb(225, 225, 235);
+    padding:40px;
+}
+.about{
+    margin-bottom: 50px;
+}
+.about:last-child{
+    margin-bottom: 0;
+}
+.tytle1{
+    color:darkblue;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+p{
+    color:darkblue;
+}
+.about .box{
+    display:flex;
+    flex-direction: row;
+    margin:20px 0;
+}
+.about .box .comp{
+    min-width:150px;
+}
+.about .box .comp h5{
+    text-transform: uppercase;
+    color: darkblue;
+    font-weight: 600;
+
+}
+.about .box .icon1 h4{
+    text-transform: uppercase;
+    color: darkblue;
+    font-size: 16px;
+
+}
+.skills .box{
+    position: relative;
+width: 100%;
+display:grid;
+grid-template-columns: 150px 1fr;
+justify-content: center;
+align-items: center;
+
+
+}
+.skills .box h4{
+    text-transform: uppercase;
+    color: darkblue;
+    font-weight: 500;
+
+
+}
+h5{
+    color:rgb(24, 9, 231);
+}
+.skills .box  .icon1{
+    position: relative;
+    width:100%;
+    height:10px;
+    background-color: rgb(174, 50, 205);
+
+}
+.skills .box  .icon1 div{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    background: rgb(36, 16, 221);
+}
+.interest ul{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+
+}
+.interest ul li {
+    list-style: none;
+    font-weight: 500;
+    margin:10px 0;
+    
+}
+.interest ul li .fas{
+    color:rgb(132, 40, 207);
+    font-size: 18px;
+    width:20px;
+    margin: 5px;
+}
+
+/*Optimization site for mob dev */
+@media (max-width: 1000px)
+{
+    body{
+        margin:10px;
+    }
+    .container{
+        margin:auto;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .interest ul {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (max-width: 1000px)
+{
+    .about .box{
+        flex-direction: column;
+        
+
+    }
+    .about .box .comp{
+        min-width:150px;
+        margin-bottom:5px;
+    }
+    .skills .box{
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+}
+/*Animation */
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+/*create site @stussy999 */
