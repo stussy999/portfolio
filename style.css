@@ -30,7 +30,7 @@ grid-template-columns: 1fr 2fr;
 }
 /*Left Container */
 .container .left{
-    background-color: white;
+    background-color: darkblue;
     padding:40px;
     
 }
