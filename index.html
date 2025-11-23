@@ -1,227 +1,1014 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Python Pro — Онлайн-курс програмування</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About me</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: radial-gradient(circle at top left, #1f2937 0, #020617 50%, #000 100%);
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            background: rgba(2, 6, 23, 0.85);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-size: 14px;
+            color: #f97316;
+        }
+
+        .logo span {
+            width: 28px;
+            height: 28px;
+            border-radius: 12px;
+            background: radial-gradient(circle at 30% 20%, #fde68a, #f59e0b 40%, #7c2d12 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            color: #020617;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 14px;
+            color: #cbd5f5;
+        }
+
+        .nav-links a {
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, #f97316, #22c55e);
+            transition: width 0.2s ease-out;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            border-radius: 9999px;
+            padding: 9px 18px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background 0.15s ease-out;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(120deg, #f97316, #eab308, #22c55e);
+            color: #020617;
+            box-shadow: 0 12px 30px rgba(250, 204, 21, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 40px rgba(250, 204, 21, 0.55);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: #e5e7eb;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        main {
+            padding-bottom: 80px;
+        }
+
+        .hero {
+            padding: 48px 0 40px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 9999px;
+            padding: 4px 12px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            margin-bottom: 18px;
+        }
+
+        .eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a, #064e3b);
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 46px);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-bottom: 14px;
+        }
+
+        h1 span {
+            background: linear-gradient(120deg, #f97316, #eab308, #22c55e, #38bdf8);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: #cbd5f5;
+            max-width: 520px;
+            margin-bottom: 20px;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .badge {
+            border-radius: 9999px;
+            padding: 4px 10px;
+            font-size: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            background: rgba(15, 23, 42, 0.7);
+            color: #e5e7eb;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .hero-note {
+            font-size: 13px;
+            color: #9ca3af;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 12px;
+        }
+
+        .stat {
+            min-width: 90px;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .hero-card {
+            position: relative;
+            border-radius: 28px;
+            padding: 22px 22px 20px;
+            background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.14), transparent 60%),
+                        radial-gradient(circle at 100% 0, rgba(250, 204, 21, 0.12), transparent 60%),
+                        rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.85);
+            overflow: hidden;
+        }
+
+        .hero-card-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+
+        .hero-card-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .hero-screen {
+            border-radius: 18px;
+            background: #020617;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            padding: 14px 16px;
+            font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 12px;
+            color: #e5e7eb;
+            box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.9);
+            margin-bottom: 16px;
+        }
+
+        .hero-screen-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .hero-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .hero-dots span {
+            width: 7px;
+            height: 7px;
+            border-radius: 9999px;
+            background: #4b5563;
+        }
+
+        .hero-dots span:nth-child(1) { background: #f97316; }
+        .hero-dots span:nth-child(2) { background: #facc15; }
+        .hero-dots span:nth-child(3) { background: #22c55e; }
+
+        .hero-code-line {
+            display: flex;
+        }
+
+        .hero-code-line span {
+            color: #4b5563;
+            margin-right: 6px;
+        }
+
+        .hero-pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .hero-pill {
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 9999px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .hero-avatar-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+
+        .avatar-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 9999px;
+            border: 2px solid #020617;
+            background: radial-gradient(circle at 30% 20%, #38bdf8, #1d4ed8, #020617);
+            margin-left: -8px;
+        }
+
+        .avatar:first-child {
+            margin-left: 0;
+        }
+
+        .hero-avatar-row p {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        .hero-accent {
+            position: absolute;
+            inset: auto -40px -60px auto;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.26), transparent 60%);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        section {
+            padding: 30px 0 0;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-bottom: 18px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .feature-card {
+            border-radius: 18px;
+            padding: 14px 14px 16px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+        }
+
+        .feature-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-bottom: 8px;
+            background: radial-gradient(circle at 30% 20%, #22c55e, #15803d, #052e16);
+        }
+
+        .feature-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .feature-text {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 24px;
+        }
+
+        .curriculum-list {
+            border-radius: 18px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            padding: 14px 16px;
+            font-size: 13px;
+        }
+
+        .week {
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(55, 65, 81, 0.7);
+        }
+
+        .week:last-child {
+            border-bottom: none;
+        }
+
+        .week-title {
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .week-modules {
+            color: #9ca3af;
+        }
+
+        .curriculum-highlight {
+            border-radius: 18px;
+            background: radial-gradient(circle at 0 0, rgba(22, 163, 74, 0.25), transparent 60%),
+                        rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            padding: 16px 16px 14px;
+            font-size: 13px;
+        }
+
+        .curriculum-highlight strong {
+            font-size: 16px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .pricing-card {
+            border-radius: 20px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            padding: 16px 16px 18px;
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pricing-card.popular {
+            border-color: rgba(250, 204, 21, 0.8);
+            box-shadow: 0 18px 45px rgba(250, 204, 21, 0.25);
+        }
+
+        .badge-popular {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            padding: 4px 8px;
+            border-radius: 9999px;
+            background: rgba(250, 204, 21, 0.1);
+            color: #facc15;
+            margin-bottom: 6px;
+        }
+
+        .pricing-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .pricing-desc {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+
+        .pricing-price {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .pricing-note {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-bottom: 12px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 12px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            gap: 6px;
+            align-items: flex-start;
+            font-size: 12px;
+            color: #e5e7eb;
+            margin-bottom: 4px;
+        }
+
+        .pricing-features li span {
+            color: #22c55e;
+            margin-top: 1px;
+        }
+
+        .pricing-bottom {
+            margin-top: auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .testimonial-card {
+            border-radius: 18px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            padding: 13px 14px 15px;
+            font-size: 12px;
+        }
+
+        .testimonial-text {
+            color: #e5e7eb;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .testimonial-role {
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 18px 0 26px;
+            border-top: 1px solid rgba(55, 65, 81, 0.7);
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .hero-grid,
+            .curriculum-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .hero-card {
+                order: -1;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .pricing-grid,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 32px;
+            }
+
+            .features-grid,
+            .pricing-grid,
+            .testimonials-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .hero-card {
+                border-radius: 22px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <div class="d-flex flex-column justify-content-center w-100 h-100">
-        <div class="container">
-            <div class="left">
-                <div class="prifle">
-                    <div class="boxet">
-                        <img src="TRIP - Series 2019.jpg">
+
+<header>
+    <div class="container">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <span>Py</span> Python Pro
+            </a>
+            <div class="nav-links">
+                <a href="#about">Про курс</a>
+                <a href="#curriculum">Програма</a>
+                <a href="#pricing">Тарифи</a>
+                <a href="#reviews">Відгуки</a>
+            </div>
+            <div class="nav-cta">
+                <button class="btn btn-ghost" onclick="scrollToSection('pricing')">Для компаній</button>
+                <button class="btn btn-primary" onclick="scrollToSection('hero')">Записатися</button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero" id="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    Старт онлайн-потоку — щомісяця
+                </div>
+                <h1>
+                    Онлайн-курс з <span>Python</span>
+                    для тих, хто хоче реальні проєкти
+                </h1>
+                <p class="hero-subtitle">
+                    За 12 тижнів ти освоїш Python з нуля, напишеш 3 проєкти для портфоліо
+                    та підготуєшся до першої співбесіди на Junior Python Developer.
+                </p>
+
+                <div class="hero-badges">
+                    <div class="badge">Живі онлайн-заняття</div>
+                    <div class="badge">Домашки з ревʼю</div>
+                    <div class="badge">Карʼєрна підтримка</div>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="scrollToSection('pricing')">
+                        Записатися зараз
+                        <span>→</span>
+                    </button>
+                    <button class="btn btn-ghost" onclick="scrollToSection('curriculum')">
+                        Подивитись програму
+                    </button>
+                </div>
+
+                <p class="hero-note">
+                    Місць у групі: <strong>15</strong> · Формат: онлайн, 3 рази на тиждень
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value">120+</div>
+                        <div class="stat-label">годин практики</div>
                     </div>
-                    <h2> Misha Zhermolenko <br><span>Front End Developer <br>& Designer</span></h2>
-                </div>
-
-                <div class="info">
-                    <h3 class="colum">Contact</h3>
-                    <ul>
-                        <li>
-                            <span class="icon"><i class="fas fa-phone"></i></span>
-                            <span class="icon1"> +38 (063) 371-83-38</span>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <span class="icon"><i class="fas fa-envelope-open"></i></span>
-                            <span class="icon1"> mishazhermolenko16@gmail.com</span>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <span class="icon"><i class="fab fa-telegram-plane"></i></span>
-                            <span class="icon1">@stussy999</span>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <span class="icon"><i class="fab fa-github"></i></span>
-                            <span class="icon1"> stussy999</span>
-                        </li>
-                    </ul>
-                </div>
-
-
-                <div class="info ed">
-                    <h3 class="colum">Education</h3>
-                    <ul>
-                        <li>
-                            <h5>2012-2015</h5>
-                            <h4>ISTEP</h4>
-                            <h4>Web Design</h4>
-                        </li>
-                        <li>
-                            <h5>2016-2021</h5>
-                            <h4>ZSP nr 1 Zamość</h4>
-                            <h4>Computer technical</h4>
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="info lang">
-                    <h3 class="colum">Language</h3>
-                    <ul>
-                        <li>
-                            <span class="lang1">English</span>
-                            <span class="line">
-                                <div style="width:70%"></div>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="lang1">Polish</span>
-                            <span class="line">
-                                <div style="width:90%"></div>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="lang1">Rusian</span>
-                            <span class="line">
-                                <div style="width:100%"></div>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="lang1">Ukrainian</span>
-                            <span class="line">
-                                <div style="width:100%"></div>
-                            </span>
-                        </li>
-                    </ul>
-
+                    <div class="stat">
+                        <div class="stat-value">87%</div>
+                        <div class="stat-label">студентів доходять до кінця курсу</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">проєктів у базі завдань</div>
+                    </div>
                 </div>
             </div>
 
+            <div class="hero-card">
+                <div class="hero-card-tag">Міні-демо того, що ти будеш писати</div>
+                <div class="hero-card-title">Консольний TODO-менеджер на Python</div>
 
-
-
-
-            <div class="right">
-                <div class="about">
-                    <h2 class="tytle1">About me</h2>
-                    <p>I am a web designer and frond ed programmer with about 1.5 years of experience. Every day I learn
-                        something new and
-                        improve my skills. I know how to work in a team and have a good attitude to criticism.
-                    </p>
+                <div class="hero-screen">
+                    <div class="hero-screen-header">
+                        <div class="hero-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div style="font-size:10px;color:#9ca3af;">main.py — python-pro</div>
+                    </div>
+<pre class="hero-code"><code class="hero-code-line"><span>1</span>tasks: list[str] = []</code>
+<code class="hero-code-line"><span>2</span>print("🐍 Python Pro — твій перший TODO-менеджер")</code>
+<code class="hero-code-line"><span>3</span>while True:</code>
+<code class="hero-code-line"><span>4</span>    cmd = input("[a]dd, [l]ist, [q]uit → ")</code>
+<code class="hero-code-line"><span>5</span>    if cmd == "a":</code>
+<code class="hero-code-line"><span>6</span>        tasks.append(input("Нове завдання: "))</code>
+<code class="hero-code-line"><span>7</span>    elif cmd == "l":</code>
+<code class="hero-code-line"><span>8</span>        for i, t in enumerate(tasks, start=1):</code>
+<code class="hero-code-line"><span>9</span>            print(i, "—", t)</code>
+<code class="hero-code-line"><span>10</span>    elif cmd == "q":</code>
+<code class="hero-code-line"><span>11</span>        break</code>
+</pre>
                 </div>
-                <div class="about">
-                    <h2 class="tytle1">Work History</h2>
-                    <div class="box">
-                        <div class="comp">
-                            <h5>2016-2018</h5>
-                            <h5>Web dev/design</h5>
-                        </div>
-                        <div class="icon1">
-                            <h4>Termomolding</h4>
-                            <p>Development of a corporate website. Creation of banners and a logo. Optimization for
-                                mobile devices. Writing unique
-                                texts and experience with SEO optimization of the site.<br><br>
-                                (HTML5, CSS3, JavaScript, Bootstap 3, Photoshop)</p>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="comp">
-                            <h5>2018-2019</h5>
-                            <h5>Web dev/design</h5>
-                        </div>
-                        <div class="icon1">
-                            <h4>CzyzewskiTransport</h4>
-                            <p>Development of a corporate website from scratch. Development of a logo and banners for
-                                the company. Adapting the site
-                                for mobile devices and different regions.<br><br>
-                                (HTML5, CSS3, JavaScript, Bootstrap 3, Figma, Photoshop)</p>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="comp">
-                            <h5>2020-2021</h5>
-                            <h5>Web dev/design</h5>
-                        </div>
-                        <div class="icon1">
-                            <h4>Belcoservice</h4>
-                            <p>Development of new design for the company. Creating a website for applications.<br><br>
-                                (HTML5, CSS3, JavaScript,PHP,Figma, Photoshop)</p>
-                        </div>
-                    </div>
 
-
-
-                    <div class="skills">
-                        <h2 class="tytle1">Skills</h2>
-                        <div class="box">
-                            <h4>HTML</h4>
-                            <div class="icon1">
-                                <div style="width:100%"></div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <h4>CSS</h4>
-                            <div class="icon1">
-                                <div style="width:90%"></div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <h4>JavaScript</h4>
-                            <div class="icon1">
-                                <div style="width:70%"></div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <h4>PHP</h4>
-                            <div class="icon1">
-                                <div style="width:80%"></div>
-                            </div>
-
-                        </div>
-                        <div class="box">
-                            <h4>Photoshop</h4>
-                            <div class="icon1">
-                                <div style="width:100%"></div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <h4>Illustrator</h4>
-                            <div class="icon1">
-                                <div style="width:100%"></div>
-                            </div>
-                        </div>
-                        <div class="box">
-                            <h4>Figma</h4>
-                            <div class="icon1">
-                                <div style="width:100%"></div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <div class="interest">
-                        <h2 class="tytle1">Profile</h2>
-                        <ul>
-                            <li><i class="fas fa-mouse"></i>Gaming</li>
-                            <li><i class="fas fa-bullseye"></i>Marketing</li>
-                            <li><i class="fas fa-pencil-alt"></i>Design</li>
-                            <li><i class="fas fa-book-open"></i>Reading</li>
-
-                        </ul>
-                    </div>
+                <div class="hero-pill-row">
+                    <div class="hero-pill">Типові завдання з інтервʼю</div>
+                    <div class="hero-pill">Зрозумілий код без «магії»</div>
+                    <div class="hero-pill">Пояснення лектором у реальному часі</div>
                 </div>
+
+                <div class="hero-avatar-row">
+                    <div class="avatar-group">
+                        <div class="avatar"></div>
+                        <div class="avatar"></div>
+                        <div class="avatar"></div>
+                    </div>
+                    <p>1000+ студентів уже пройшли курс і працюють в IT</p>
+                </div>
+
+                <div class="hero-accent"></div>
             </div>
         </div>
+    </section>
 
-      <script src="https://kit.fontawesome.com/320c6c77fc.js" crossorigin="anonymous"></script>
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Для кого цей курс?</h2>
+            <p class="section-subtitle">
+                Якщо ти давно хотів/хотіла зайти в IT, але губився між туторіалами — цей курс закриє прогалини
+                та дасть чіткий план дій.
+            </p>
 
-        <!-- Pulse Live Chat -->
-        <script src="https://cdn.pulse.is/livechat/loader.js"
-                data-live-chat-id="692331980daf65e47e05ed2c"
-                async></script>
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">👶</div>
+                    <h3 class="feature-title">Повний початківець</h3>
+                    <p class="feature-text">
+                        Починаємо з базових понять: що таке змінні, типи даних, гілки, цикли, функції.
+                        Без «води» та надто складної теорії.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3 class="feature-title">Студент технічного вишу</h3>
+                    <p class="feature-text">
+                        Пройдемося по темах, які дають в університеті, але на практиці: структури даних,
+                        алгоритми, обробка файлів, робота з API.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">🧑‍💻</div>
+                    <h3 class="feature-title">Перехід з іншої сфери</h3>
+                    <p class="feature-text">
+                        Допоможемо скласти план переходу в IT, зібрати портфоліо та правильно подати
+                        свій попередній досвід на співбесідах.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Мета — Junior Python</h3>
+                    <p class="feature-text">
+                        Домашні завдання та фінальні проєкти максимально наближені до бойових задач у
+                        продуктових компаніях та аутсорсі.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="curriculum">
+        <div class="container">
+            <h2 class="section-title">Програма курсу</h2>
+            <p class="section-subtitle">
+                12 тижнів, які крок за кроком проведуть тебе від «print(&quot;Hello, world&quot;)» до
+                повноцінних застосунків на Flask та роботи з даними.
+            </p>
+
+            <div class="curriculum-grid">
+                <div class="curriculum-list">
+                    <div class="week">
+                        <div class="week-title">Тиждень 1–2 · Основи Python</div>
+                        <div class="week-modules">
+                            Синтаксис, змінні, типи даних, умови, цикли, колекції (list, dict, tuple, set).
+                        </div>
+                    </div>
+                    <div class="week">
+                        <div class="week-title">Тиждень 3–4 · Функції та модулі</div>
+                        <div class="week-modules">
+                            Функції, анотації типів, модулі та пакети, робота з файлами, помилки та винятки.
+                        </div>
+                    </div>
+                    <div class="week">
+                        <div class="week-title">Тиждень 5–6 · ООП та структури даних</div>
+                        <div class="week-modules">
+                            Класи, наслідування, інкапсуляція, ітератори та генератори, часова складність.
+                        </div>
+                    </div>
+                    <div class="week">
+                        <div class="week-title">Тиждень 7–8 · Веб на Flask</div>
+                        <div class="week-modules">
+                            HTTP, маршрути, шаблони, форми, підключення бази даних (SQLite/PostgreSQL).
+                        </div>
+                    </div>
+                    <div class="week">
+                        <div class="week-title">Тиждень 9–10 · Python для даних</div>
+                        <div class="week-modules">
+                            NumPy, Pandas, візуалізація даних, невеликі дослідження на реальних датасетах.
+                        </div>
+                    </div>
+                    <div class="week">
+                        <div class="week-title">Тиждень 11–12 · Фінальний проєкт</div>
+                        <div class="week-modules">
+                            Власний застосунок: вибір домену, архітектура, код-ревʼю, деплой на хостинг.
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="curriculum-highlight">
+                    <p><strong>Фінальний проєкт</strong></p>
+                    <p style="margin:8px 0 10px;">
+                        Наприкінці курсу ти презентуєш свій проєкт: наприклад, застосунок для трекінгу звичок,
+                        телеграм-бот або дашборд з аналітикою.
+                    </p>
+                    <p>
+                        Ми допоможемо оформити його в портфоліо, описати стек, задачі й результат, а також
+                        додати в резюме та LinkedIn.
+                    </p>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="container">
+            <h2 class="section-title">Тарифи та формат навчання</h2>
+            <p class="section-subtitle">
+                Обери формат, який підходить саме тобі. Усі тарифи включають доступ до матеріалів курсу на 12 місяців.
+            </p>
+
+            <div class="pricing-grid">
+                <article class="pricing-card">
+                    <h3 class="pricing-name">Basic</h3>
+                    <p class="pricing-desc">Самостійне проходження з підтримкою в чаті.</p>
+                    <p class="pricing-price">₴4 900</p>
+                    <p class="pricing-note">оплата один раз · без прихованих платежів</p>
+                    <ul class="pricing-features">
+                        <li><span>✓</span><div>Відео-лекції та конспекти</div></li>
+                        <li><span>✓</span><div>Домашні завдання з автоперевіркою</div></li>
+                        <li><span>✓</span><div>Доступ до спільноти студентів</div></li>
+                        <li><span>✕</span><div>Без особистого ментора</div></li>
+                    </ul>
+                    <div class="pricing-bottom">
+                        <button class="btn btn-ghost" onclick="alert('Уявний запис на Basic 😄')">
+                            Обрати Basic
+                        </button>
+                    </div>
+                </article>
+
+                <article class="pricing-card popular">
+                    <div class="badge-popular">
+                        ★ Найпопулярніший
+                    </div>
+                    <h3 class="pricing-name">Mentor</h3>
+                    <p class="pricing-desc">Оптимальний формат з особистим ревʼю коду.</p>
+                    <p class="pricing-price">₴8 900</p>
+                    <p class="pricing-note">можлива оплата частинами</p>
+                    <ul class="pricing-features">
+                        <li><span>✓</span><div>Усе з тарифу Basic</div></li>
+                        <li><span>✓</span><div>Щотижневі живі заняття в Zoom</div></li>
+                        <li><span>✓</span><div>Персональне ревʼю коду від ментора</div></li>
+                        <li><span>✓</span><div>Допомога з фінальним проєктом</div></li>
+                    </ul>
+                    <div class="pricing-bottom">
+                        <button class="btn btn-primary" onclick="alert('Уявний запис на Mentor 😄')">
+                            Записатися на Mentor
+                        </button>
+                    </div>
+                </article>
+
+                <article class="pricing-card">
+                    <h3 class="pricing-name">Career</h3>
+                    <p class="pricing-desc">Максимальна підтримка на шляху до першої роботи.</p>
+                    <p class="pricing-price">₴12 900</p>
+                    <p class="pricing-note">індивідуальний супровід</p>
+                    <ul class="pricing-features">
+                        <li><span>✓</span><div>Усе з тарифу Mentor</div></li>
+                        <li><span>✓</span><div>Карʼєрні сесії 1:1 (2 штуки)</div></li>
+                        <li><span>✓</span><div>Допомога з резюме та LinkedIn</div></li>
+                        <li><span>✓</span><div>Мок-інтервʼю з розбором помилок</div></li>
+                    </ul>
+                    <div class="pricing-bottom">
+                        <button class="btn btn-ghost" onclick="alert('Уявний запис на Career 😄')">
+                            Обрати Career
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <div class="container">
+            <h2 class="section-title">Відгуки студентів</h2>
+            <p class="section-subtitle">
+                Ми зібрали кілька коротких історій людей, які вже пройшли курс і змінили свою карʼєру.
+            </p>
+
+            <div class="testimonials-grid">
+                <article class="testimonial-card">
+                    <p class="testimonial-text">
+                        «Прийшов з повного нуля. На 8 тижні вже збирав невеликий REST API, а на 3 місяці після
+                        курсу влаштувався Python-розробником у продуктову компанію в Києві».
+                    </p>
+                    <p class="testimonial-author">Дмитро</p>
+                    <p class="testimonial-role">Junior Python Developer</p>
+                </article>
+
+                <article class="testimonial-card">
+                    <p class="testimonial-text">
+                        «Сподобалося, що завдання максимально наближені до реальних. Ментор не просто виправляв,
+                        а пояснював, як мислити як розробник».
+                    </p>
+                    <p class="testimonial-author">Оля</p>
+                    <p class="testimonial-role">Перехід з маркетингу в IT</p>
+                </article>
+
+                <article class="testimonial-card">
+                    <p class="testimonial-text">
+                        «Курс зекономив мені купу часу. Замість хаотичного YouTube — чітка структура, дедлайни
+                        та відчуття, що тебе підтримують».
+                    </p>
+                    <p class="testimonial-author">Андрій</p>
+                    <p class="testimonial-role">Студент КНУ</p>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-row">
+        <p>© 2025 Python Pro. Умовний навчальний проєкт для портфоліо :)</p>
+        <div class="footer-links">
+            <a href="#hero">Головна</a>
+            <a href="#pricing">Тарифи</a>
+            <a href="#reviews">Відгуки</a>
+        </div>
     </div>
+</footer>
+
+<script>
+    function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        window.scrollTo({
+            top: el.offsetTop - 80,
+            behavior: "smooth"
+        });
+    }
+    <script src="https://cdn.pulse.is/livechat/loader.js" data-live-chat-id="692331980daf65e47e05ed2c" async></script>
+</script>
+
 </body>
-
 </html>
-
